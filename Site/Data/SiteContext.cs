@@ -17,5 +17,7 @@ namespace Site.Data
         public DbSet<Site.Models.Room> Room { get; set; } = default!;
 
         public DbSet<Site.Models.User> User { get; set; } = default!;
+
+        public DbSet<Site.Models.CurrentUser> CurrentUser { get; set; } = default!;
     }
 }

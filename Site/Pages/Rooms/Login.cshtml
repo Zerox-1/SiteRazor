@@ -2,10 +2,12 @@
 @model Site.Pages.LoginModel
 @{
 }
-<form  class="As">
-    <input id="email" placeholder="Почта" type="text" required>
+<form  class="As" method="post">
+    <span asp-validation-for="Input.Email" class="text-danger"></span>
+    <input asp-for="Input.Email" placeholder="Почта" type="text" required>
     <br>
-    <input id="password" placeholder="Пароль" type="password" required>
+    <span asp-validation-for="Input.Password" class="text-danger"></span>
+    <input asp-for="Input.Password" placeholder="Пароль" type="password" required>
     <br>
     <button type="submit" >Войти</button>
     <br>

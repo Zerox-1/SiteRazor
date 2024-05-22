@@ -2,7 +2,7 @@
 
 namespace Site.Models
 {
-    public class User
+    public class CurrentUser
     {
         public int Id { get; set; }
 
