@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Room.Landlord" class="control-label"></label>
-                <input asp-for="Room.Landlord" class="form-control" />
+                <input asp-for="Room.Landlord" class="form-control" value="@Model.nw.FirstName @Model.nw.LastName" readonly>
                 <span asp-validation-for="Room.Landlord" class="text-danger"></span>
             </div>
             <div class="form-group">

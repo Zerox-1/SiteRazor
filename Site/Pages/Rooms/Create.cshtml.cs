@@ -13,14 +13,21 @@ namespace Site.Pages.Rooms
     public class CreateModel : PageModel
     {
         private readonly Site.Data.SiteContext _context;
-
+        public bool fl;
+        public CurrentUser nw;
         public CreateModel(Site.Data.SiteContext context)
         {
             _context = context;
+
         }
 
         public IActionResult OnGet()
         {
+            fl = _context.CurrentUser.Any();
+            if (fl)
+            {
+                nw = _context.CurrentUser.First();
+            }
             return Page();
         }
 
@@ -35,7 +42,7 @@ namespace Site.Pages.Rooms
             {
                 return Page();
             }
-
+            Room.LordId = _context.CurrentUser.First().Id;
             _context.Room.Add(Room);
             await _context.SaveChangesAsync();
 

@@ -15,8 +15,15 @@ namespace Site.Pages
         }
         [BindProperty]
         public LoginInputModel Input { get; set; }
+        public bool fl;
+        public CurrentUser nw;
         public void OnGet()
         {
+            fl = _context.CurrentUser.Any();
+            if (fl)
+            {
+                nw = _context.CurrentUser.First();
+            }
         }
         public IActionResult OnPost()
         {
@@ -35,7 +42,7 @@ namespace Site.Pages
                 return Page();
             }
             var e = _context.User.First(u => u.Email == Input.Email);
-            CurrentUser nw = new CurrentUser {
+            nw = new CurrentUser {
                 Id = e.Id,
                 FirstName=e.FirstName,
                 LastName=e.LastName,
@@ -46,6 +53,12 @@ namespace Site.Pages
             };
 
             _context.CurrentUser.Add(nw);
+            _context.SaveChanges();
+            return RedirectToPage("Index");
+        }
+        public IActionResult OnPostExit()
+        {
+            _context.CurrentUser.Remove(_context.CurrentUser.First());
             _context.SaveChanges();
             return RedirectToPage("Index");
         }

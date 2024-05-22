@@ -13,10 +13,16 @@ namespace Site.Pages.Rooms
     public class IndexModel : PageModel
     {
         private readonly Site.Data.SiteContext _context;
-
+        public bool fl;
+        public CurrentUser nw;
         public IndexModel(Site.Data.SiteContext context)
         {
             _context = context;
+            fl = _context.CurrentUser.Any();
+            if (fl)
+            {
+                nw = _context.CurrentUser.First();
+            }
         }
 
         public IList<Room> Room { get;set; } = default!;
