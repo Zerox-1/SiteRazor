@@ -10,5 +10,7 @@ namespace Site.Models
         public decimal Duration { get; set; }
 
         public int LordId { get; set; }
+
+        public int Rented { get; set; }
     }
 }
