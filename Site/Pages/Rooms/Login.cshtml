@@ -2,6 +2,7 @@
 @model Site.Pages.LoginModel
 @{
 }
+@if(!Model.fl){
 <form  class="As" method="post">
     <span asp-validation-for="Input.Email" class="text-danger"></span>
     <input asp-for="Input.Email" placeholder="Почта" type="text" required>
@@ -14,3 +15,28 @@
     <a class="nav-link text-dark" asp-page="Registration">Регистрация</a>
     <a class="nav-link text-dark" asp-page="Index">Вернуться</a>
 </form>
+}
+else{
+
+    <p><a>@Model.nw.FirstName</a>
+
+    <a>@Model.nw.LastName</a></p>
+
+    <p><a>@Model.nw.Phone</a></p>
+
+    <p><a>@Model.nw.Email</a></p>
+    @if (Model.nw.Role ==2)
+    {
+
+        <p>
+            <a asp-page="Create">Create New</a>
+        </p>
+    }
+    else
+    {
+        
+    }
+    <form method="post">
+        <button asp-page-handler="Exit">Exit</button>
+    </form>
+}
